@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mi curso uno clase 2</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+    <script type="text/babel">
+      console.log("Load document");
+
+      const list = ["Titanic", "La monja", "Bob sponge"];
+
+      const styles = ["item", "item_active", "item_disable"];
+
+      function MyLi(props) {
+        return <li className={props.estilo}>{props.children}</li>;
+      }
+
+      function MyUl() {
+        return (
+          <ul>
+            {list.map(function (element, index) {
+              return <MyLi estilo={styles[0]}>{element}</MyLi>;
+            })}
+          </ul>
+        );
+      }
+
+      function Mydiv(props) {
+        return (
+          <div>
+            <MyUl />
+          </div>
+        );
+      }
+
+      const container = document.getElementById("root");
+      ReactDOM.render(
+        <Mydiv color="red" text="text">
+          <ul></ul>
+        </Mydiv>,
+        container
+      );
+    </script>
+  </body>
+</html>
